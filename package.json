@@ -1,18 +1,23 @@
 {
   "name": "nasa-project",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000n\u0000a\u0000s\u0000a\u0000-\u0000p\u0000r\u0000o\u0000j\u0000e\u0000c\u0000t\u0000\r\u0000 \u0000",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server":"npm install --prefix server",
-    "install-client":"npm install --prefix client",
-    "install":"npm run install-server && npm run install-client",
-    "server":"npm run watch --prefix server",
-    "client":"npm start --prefix client",
-    "watch":"npm run server & npm run client",
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm run install-server && npm run install-client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "deploy": "npm run build --prefix client && npm start --prefix server",
     "test": "npm run test --prefix server && npm run test --prefix client"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "mongoose": "^7.0.2"
+  }
 }
